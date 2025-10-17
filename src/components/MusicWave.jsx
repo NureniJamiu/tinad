@@ -28,19 +28,19 @@ const MusicWave = ({ className = '' }) => {
 
   return (
     <div className="flex items-center gap-3">
-      <div className='size-8 rounded-full bg-white'/>
+      <div className='size-8 rounded-full bg-white' />
       <div
-      ref={containerRef}
-      className={`flex items-end gap-1.5 ${className}`}
-    >
-      {bars.map((_, index) => (
-        <div
-          key={index}
-          ref={(el) => (barRefs.current[index] = el)}
-          className="w-2 h-8 bg-white rounded-full origin-bottom"
-        />
-      ))}
-    </div>
+        ref={containerRef}
+        className={`flex items-end gap-1.5 ${className}`}
+      >
+        {bars.map((_, index) => (
+          <div
+            key={index}
+            ref={(el) => (barRefs.current[index] = el)}
+            className="w-2 h-8 bg-white rounded-full origin-bottom"
+          />
+        ))}
+      </div>
     </div>
   );
 };

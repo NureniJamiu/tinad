@@ -7,9 +7,6 @@ import RotatingDisc from "./RotatingDisc";
 import MusicWave from "./MusicWave";
 
 const Hero = () => {
-    const leftCardRef = useRef(null);
-    const centerCardRef = useRef(null);
-    const rightCardRef = useRef(null);
     const containerRef = useRef(null);
     const titleRef = useRef(null);
     const subtitleRef = useRef(null);
@@ -17,22 +14,10 @@ const Hero = () => {
     const headingLine2Ref = useRef(null);
 
     useGSAP(() => {
-
-
         // Create a timeline with default ease
         const tl = gsap.timeline({
             defaults: { ease: "power1.out" },
             onComplete: () => tl.kill() // Cleanup timeline when done
-        });
-
-        // INITIAL STATES SECTION
-        // Set initial positions for cards
-        gsap.set([leftCardRef.current, centerCardRef.current, rightCardRef.current], {
-            x: 0,
-            opacity: 0,
-            rotation: 0,
-            left: "50%",
-            xPercent: -50  // Centers the cards
         });
 
         // Set initial state for text elements
@@ -57,44 +42,20 @@ const Hero = () => {
             opacity: 1,
             duration: 0.3
         })
-
             // Subtitle Animation
             .to(subtitleRef.current, {
                 y: 0,
                 opacity: 1,
                 duration: 0.3
             }, "-=0.1")
-
-            // Cards fade in after subtitle
-            .to([leftCardRef.current, centerCardRef.current, rightCardRef.current], {
-                opacity: 1,
-                duration: 0.5,
-                ease: "power2.out"
-            }, "+=0.1")
-
-            // Spread the cards smoothly - responsive distance
-            .to([leftCardRef.current, rightCardRef.current], {
-                x: function (i) {
-                    const isMobile = window.innerWidth < 640;
-                    const isTablet = window.innerWidth < 1024;
-                    const distance = isMobile ? 200 : isTablet ? 280 : 320;
-                    return i === 0 ? -distance : distance;
-                },
-                y: 18,
-                rotation: function (i) { return i === 0 ? -6 : 6; },
-                duration: 0.7,
-                ease: "power2.out"
-            }, "-=0.2")
-
-            // First line of heading splits in during card spread
+            // First line of heading splits in
             .to(splitLine1.chars, {
                 y: 0,
                 opacity: 1,
                 duration: 0.5,
                 stagger: 0.02,
                 ease: "power2.out"
-            }, "-=0.5")
-
+            }, "+=0.1")
             // Second line of heading splits in
             .to(splitLine2.chars, {
                 y: 0,
@@ -108,7 +69,7 @@ const Hero = () => {
     return (
         <section id="hero" >
 
-            <div className="body">
+            <div ref={containerRef} className="body">
                 {/* Top Content */}
                 <div className="text-center space-y-1 md:space-y-3 pt-4 px-4">
                     <p ref={titleRef} className="font-bold text-lg sm:text-xl md:text-xl opacity-0">
@@ -138,6 +99,8 @@ const Hero = () => {
                         <img src="/hero2.png" alt="Hero 2" className="w-full h-full object-cover object-center" />
                     </div>
                 </div> */}
+
+                <p className="text-red-400 mt-15">[Images stays here...]</p>
 
                 {/* Marquee Text - overlapping cards at bottom */}
                 <div className="absolute bottom-0 md:bottom-0 left-0 w-full z-20">

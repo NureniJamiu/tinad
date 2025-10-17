@@ -88,6 +88,7 @@ body {
 
     #hero {
         @apply relative z-10 h-screen w-full border border-transparent overflow-hidden;
+        transform-origin: center center;
 
         h1 {
             @apply md:mt-32 mt-40 text-8xl md:text-[20vw] leading-none text-center;
@@ -118,6 +119,14 @@ body {
 
     video {
         @apply w-full md:h-[80%] h-1/2 absolute bottom-0 left-0 md:object-contain object-bottom object-cover;
+    }
+
+    #artist {
+        @apply relative min-h-screen w-full bg-black;
+        
+        h2 {
+            @apply will-change-transform;
+        }
     }
 
     #cocktails {

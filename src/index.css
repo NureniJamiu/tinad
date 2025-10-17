@@ -89,6 +89,7 @@ body {
     #hero {
         @apply relative z-10 h-screen w-full border border-transparent overflow-hidden;
         transform-origin: center center;
+        will-change: transform;
 
         h1 {
             @apply md:mt-32 mt-40 text-8xl md:text-[20vw] leading-none text-center;
@@ -125,7 +126,61 @@ body {
         @apply relative min-h-screen w-full bg-black;
         
         h2 {
-            @apply will-change-transform;
+            will-change: transform;
+        }
+    }
+
+    .artist-cards-container {
+        @apply absolute flex gap-6 px-10;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+    }
+
+    .artist-card {
+        @apply overflow-hidden transition-all duration-300;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        width: 280px;
+        height: 360px;
+        will-change: transform;
+    }
+
+    .artist-card:hover {
+        border-color: var(--color-yellow);
+    }
+
+    .artist-card-image {
+        @apply w-full object-cover;
+        height: 240px;
+    }
+
+    .artist-card-content {
+        @apply p-5;
+    }
+
+    .artist-card-name {
+        @apply text-2xl font-semibold mb-2;
+        color: var(--color-yellow);
+    }
+
+    .artist-card-genre {
+        @apply text-sm;
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    @media (max-width: 768px) {
+        .artist-cards-container {
+            @apply flex-col px-5 gap-4;
+        }
+
+        .artist-card {
+            @apply w-full h-auto;
+        }
+
+        .artist-card-image {
+            @apply h-52;
         }
     }
 

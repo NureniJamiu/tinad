@@ -63,10 +63,10 @@ body {
     }
 
     nav {
-        @apply fixed z-50 w-full;
+        @apply fixed z-50 w-full h-20;
 
         div {
-            @apply flex md:flex-row flex-col md:justify-between items-center gap-5 py-5 lg:px-0 px-5 container mx-auto;
+            @apply flex md:flex-row flex-col md:justify-between items-center gap-5 py-5 lg:px-0 px-5 container mx-auto h-full;
         }
 
         p {
@@ -87,7 +87,7 @@ body {
     }
 
     #hero {
-        @apply relative z-10 min-h-dvh w-full border border-transparent;
+        @apply relative z-10 h-screen w-full border border-transparent overflow-hidden;
 
         h1 {
             @apply md:mt-32 mt-40 text-8xl md:text-[20vw] leading-none text-center;
@@ -102,7 +102,7 @@ body {
         }
 
         .body {
-            @apply container mx-auto absolute left-1/2 -translate-x-1/2 lg:bottom-20 top-auto md:top-[20vh] flex justify-center items-start px-5;
+            @apply container mx-auto h-full pt-20 flex flex-col justify-start items-center px-5;
 
            .img-container {
                 @apply absolute w-72 h-80 bg-white/10 rounded-lg overflow-hidden;

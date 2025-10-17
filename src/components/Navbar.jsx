@@ -24,8 +24,8 @@ const Navbar = () => {
   return (
     <nav className="bg-black">
         <div>
-            <a href="/">
-                <img src="/white-logo.png" alt="Tinad Logo" />
+            <a href="/" className="flex items-center">
+                <img src="/white-logo.png" alt="Tinad Logo" className="h-12 w-auto object-contain" />
             </a>
           <ul>
               {navLinks.map((link) => (

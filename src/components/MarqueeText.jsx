@@ -2,16 +2,16 @@ import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
-const MarqueeText = ({ 
-  text = "This is Not a Drill", 
-  speed = 20, 
-  className = "" 
+const MarqueeText = ({
+  text = "This is Not a Drill",
+  speed = 20,
+  className = ""
 }) => {
   const containerRef = useRef(null);
 
   useGSAP(() => {
     const textElements = containerRef.current.querySelectorAll('.marquee-text');
-    
+
     gsap.to(textElements, {
       xPercent: -100,
       duration: speed,
@@ -21,7 +21,7 @@ const MarqueeText = ({
   }, { scope: containerRef });
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className={`overflow-hidden whitespace-nowrap ${className}`}
     >

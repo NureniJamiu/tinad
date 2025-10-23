@@ -5,7 +5,7 @@ import { useRef } from "react";
 import MarqueeText from "./MarqueeText";
 import RotatingDisc from "./RotatingDisc";
 import MusicWave from "./MusicWave";
-import CrossFadeBackground from "./CrossFadeBackground";
+import { motion } from "motion/react";
 
 const Hero = () => {
     const containerRef = useRef(null);
@@ -67,57 +67,74 @@ const Hero = () => {
             }, "-=0.2")
     }, { scope: containerRef });
 
+    const images = [
+        "https://images.pexels.com/photos/210922/pexels-photo-210922.jpeg",
+        "https://images.pexels.com/photos/894156/pexels-photo-894156.jpeg",
+        "https://images.pexels.com/photos/243989/pexels-photo-243989.jpeg",
+    ];
+
     return (
         <section id="hero" >
-                <div ref={containerRef} className="body">
-                    {/* Top Content */}
-                    <div className="flex flex-col text-center space-y-1 xl:space-y-3 md:space-y-3 pt-4 px-4">
-                        <p ref={titleRef} className="font-bold text-lg sm:text-xl md:text-xl xl:text-2xl opacity-0">
-                            TINAD: Amplifying African Voices on the Global Stage
-                        </p>
-                        <p ref={subtitleRef} className="max-w-2xl mx-auto text-sm sm:text-base md:text-sm xl:text-base opacity-0 px-2">
-                            Creating meaningful business around African Talent. Exporting it to the Global Stage: A bridge between African Creativity and International opportunity
-                        </p>
+            <div ref={containerRef} className="h-[calc(100vh-5rem)] py-0">
+                {/* Top Content */}
+                <div className="flex flex-col text-center space-y-1 xl:space-y-3 md:space-y-3 px-4 ">
+                    <p ref={titleRef} className="font-bold text-lg sm:text-xl md:text-xl xl:text-2xl opacity-0">
+                        TINAD: Amplifying African Voices on the Global Stage
+                    </p>
+                    <p ref={subtitleRef} className="max-w-2xl mx-auto text-sm sm:text-base md:text-sm xl:text-base opacity-0 px-2">
+                       Exporting it to the Global Stage: A bridge between African Creativity and International opportunity
+                    </p>
 
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl xl:leading-28 font-serif leading-12 tracking-tighter">
-                            <span ref={headingLine1Ref}>More than Music. </span>
-                            <span ref={headingLine2Ref}>More than a Label.</span>
-                        </h2>
-                    </div>
-
-                    {/* Cards Container - positioned in center with better spacing */}
-                    {/* <div ref={containerRef} className="absolute top-[35%] sm:top-[38%] md:top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <div ref={leftCardRef} className="absolute w-44 h-32 sm:w-52 sm:h-60 md:w-64 md:h-72 lg:w-72 lg:h-80 bg-white/10 rounded-lg overflow-hidden">
-                            <img src="/hero4.jpg" alt="Hero 1" className="w-full h-full object-cover object-center" />
-                        </div>
-
-                        <div ref={rightCardRef} className="absolute w-44 h-32 sm:w-52 sm:h-60 md:w-64 md:h-72 lg:w-72 lg:h-80 bg-white/10 rounded-lg overflow-hidden">
-                            <img src="/hero3.png" alt="Hero 3" className="w-full h-full object-cover object-center" />
-                        </div>
-
-                        <div ref={centerCardRef} className="absolute w-44 h-32 sm:w-52 sm:h-60 md:w-64 md:h-72 lg:w-72 lg:h-80 bg-white/10 rounded-lg overflow-hidden">
-                            <img src="/hero2.png" alt="Hero 2" className="w-full h-full object-cover object-center" />
-                        </div>
-                    </div> */}
-                    {/* <CrossFadeBackground /> */}
-
-                    <p className="text-red-400 mt-15">[Images stays here...]</p>
-
-                    {/* Marquee Text - overlapping cards at bottom */}
-                    <div className="absolute bottom-0 md:bottom-0 left-0 w-full z-20">
-                        <MarqueeText />
-                    </div>
-
-                    {/* Disc - centered at bottom */}
-                    <div className="absolute bottom-0 md:bottom-0 left-1/2 -translate-x-1/2 z-30">
-                        <RotatingDisc imageSrc="/music-disc.png" />
-                    </div>
-
-                    {/* Wave - centered on disc at bottom */}
-                    <div className="absolute bg-black p-3 rounded-full bottom-0 md:bottom-0 left-1/2 -translate-x-1/2 z-40">
-                        <MusicWave />
-                    </div>
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl xl:leading-28 font-serif leading-12 tracking-tighter">
+                        <span ref={headingLine1Ref}>More than Music. </span>
+                        <span ref={headingLine2Ref}>More than a Label.</span>
+                    </h2>
                 </div>
+                <div className="flex justify-center items-center mt-6">
+                    {images.map((image, idx) => (
+                        <motion.div
+                            key={"images" + idx}
+                            style={{
+                                rotate: Math.random() * 20 - 10,
+                            }}
+                            whileHover={{
+                                scale: 1.1,
+                                rotate: 0,
+                                zIndex: 100,
+                            }}
+                            whileTap={{
+                                scale: 1.1,
+                                rotate: 0,
+                                zIndex: 100,
+                            }}
+                            className="rounded-xl -mr-4 mt-4 p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 shrink-0 overflow-hidden"
+                        >
+                            <img
+                                src={image}
+                                alt="bali images"
+                                width="500"
+                                height="500"
+                                className="rounded-lg h-20 w-20 md:h-64 md:w-64 object-cover shrink-0"
+                            />
+                        </motion.div>
+                    ))}
+                </div>
+
+                {/* Marquee Text - overlapping cards at bottom */}
+                <div className="absolute bottom-0 md:bottom-20 left-0 w-full z-20">
+                    <MarqueeText />
+                </div>
+
+                {/* Disc - centered at bottom */}
+                <div className="absolute bottom-0 md:bottom-20 left-1/2 -translate-x-1/2 z-30">
+                    <RotatingDisc imageSrc="/music-disc.png" />
+                </div>
+
+                {/* Wave - centered on disc at bottom */}
+                <div className="absolute bg-black p-3 rounded-full bottom-0 md:bottom-20 left-1/2 -translate-x-1/2 z-40">
+                    <MusicWave />
+                </div>
+            </div>
         </section>
     )
 }

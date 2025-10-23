@@ -1,22 +1,17 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 
-const ArtistCard = forwardRef(({ name, genre, image }, ref) => {
-  const handleImageError = (e) => {
-    e.target.src = '/hero1.png'; // Fallback to existing hero image
-  };
+const ArtistCard = ({ name, genre, image }) => {
 
   return (
     <div
-      ref={ref}
-      className="artist-card w-full md:w-[280px] h-auto md:h-[360px] xl:w-[460px] xl:h-[620px] bg-white/5 border border-white/10 rounded-2xl overflow-hidden transition-colors duration-300 hover:border-[#e7d393]"
+      className="artist-card w-full md:w-[380px] xl:w-[560px] bg-white/5 border border-white/10 rounded-2xl overflow-hidden transition-colors duration-300 hover:border-[#e7d393] mr-4 flex-shrink-0"
     >
-      <img
-        src={image}
-        alt={name}
-        onError={handleImageError}
-        className="w-full h-[200px] md:h-[240px] xl:h-[500px] object-cover"
-      />
-      <div className="p-5">
+        <img
+          src={image}
+          alt={name}
+          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+        />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-6">
         <h3 className="text-2xl font-semibold text-[#e7d393] mb-2">
           {name}
         </h3>
@@ -26,7 +21,7 @@ const ArtistCard = forwardRef(({ name, genre, image }, ref) => {
       </div>
     </div>
   );
-});
+};
 
 ArtistCard.displayName = 'ArtistCard';
 

@@ -14,17 +14,10 @@ const ArtistDisplayCard = ({
                </div>
             </div>
 
-            {/* <div className="flex-1 ">
-                <div className="relative w-72">
-                    <img src={topImage} alt="Kendrick Lamar" className="absolute -right-36 -bottom-40"/>
-                    <img src={bottomImage} alt="Kendrick Lamar" className="absolute left-0 -top-36"/>
-                </div>
-            </div> */}
-
             <div className="flex-1 ">
                 <div className="relative w-72">
-                    <img src={topImage} alt="Kendrick Lamar" className={`absolute -bottom-40 group-hover:-rotate-12 transition-all ${reverse ? "-right-64" : "-right-32"}`}/>
-                    <img src={bottomImage} alt="Kendrick Lamar" className={`absolute -top-36 group-hover:rotate-12 transition-all ${reverse ? "left-36" : "left-0"}`}/>
+                    <img src={topImage} alt={name} className={`absolute -bottom-40 group-hover:-rotate-12 transition-all ${reverse ? "-right-64" : "-right-32"}`}/>
+                    <img src={bottomImage} alt={name} className={`absolute -top-36 group-hover:rotate-12 transition-all ${reverse ? "left-36" : "left-0"}`}/>
                 </div>
             </div>
         </div>

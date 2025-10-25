@@ -1,25 +1,19 @@
-import { artists } from "../constants";
+import ArtistDisplayCard from "@/components/ArtistDisplayCard";
 import ArtistCard from "../components/ArtistCard";
 
 const Artists = () => {
     return (
-        <div className="min-h-screen bg-black pt-32 pb-20 px-6">
-            <div className="max-w-7xl mx-auto">
-                <h1 className="text-6xl md:text-8xl font-serif text-center mb-16">
-                    Our <span className="text-[#694D29]">Artists</span>
-                </h1>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    {artists.map((artist) => (
-                        <ArtistCard
-                            key={artist.id}
-                            name={artist.name}
-                            genre={artist.genre}
-                            image={artist.image}
-                        />
-                    ))}
-                </div>
+        <section>
+            <div className="min-h-96">
+                <img src="/artist-frame.png" alt="artists banner" className="w-full"/>
             </div>
-        </div>
+
+            <div className="max-w-7xl mx-auto space-y-10 py-10">
+                <ArtistDisplayCard />
+                <ArtistDisplayCard name="Buju Bnxn" topImage="/buju1.png" bottomImage="/buju2.png" reverse/>
+                <ArtistDisplayCard />
+            </div>
+        </section>
     );
 };
 

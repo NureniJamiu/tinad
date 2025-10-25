@@ -3,13 +3,15 @@ import Artist from "../components/Artist";
 import Producer from "../components/Producer";
 import NewReleases from "@/components/NewReleases";
 import CTA from "@/components/CTA";
+import MissionVision from "@/components/MissionVision";
 
 const Home = () => {
     return (
         <>
             <Hero />
             <Artist />
-            <Producer />
+            {/* <Producer /> */}
+            <MissionVision />
             <NewReleases />
             <CTA />
         </>

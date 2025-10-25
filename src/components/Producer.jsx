@@ -6,7 +6,7 @@ const Producer = () => {
     return (
         <section
             id="producer"
-            className="relative py-20"
+            className="relative pb-20"
         >
             <div className="text-center space-y-1">
                 <h2

@@ -6,7 +6,7 @@ const Artist = () => {
     return (
         <section
             id="artist"
-            className="relative py-20"
+            className="relative pt-20"
         >
             <div className="text-center space-y-1">
                 <h2

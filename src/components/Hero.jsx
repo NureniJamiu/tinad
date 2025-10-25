@@ -114,7 +114,7 @@ const Hero = () => {
                                 alt="bali images"
                                 width="500"
                                 height="500"
-                                className="rounded-lg h-20 w-20 md:h-64 md:w-64 object-cover shrink-0"
+                                className="rounded-lg h-20 w-20 md:h-64 md:w-64 lg:h-96 lg:w-96 xl:h-[450px] xl:w-[450px] object-cover shrink-0"
                             />
                         </motion.div>
                     ))}

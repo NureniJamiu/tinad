@@ -49,10 +49,10 @@ const BlogDetail = () => {
     const formatDate = (dateString) => {
         if (!dateString) return '';
         const date = new Date(dateString);
-        return date.toLocaleDateString('en-US', { 
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric' 
+        return date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
         });
     };
 
@@ -126,7 +126,7 @@ const BlogDetail = () => {
     if (error) {
         return (
             <section className="min-h-screen">
-                <ErrorFallback 
+                <ErrorFallback
                     error={error}
                     retry={retry}
                     title="Unable to load blog post"
@@ -139,7 +139,7 @@ const BlogDetail = () => {
     if (!blog) {
         return (
             <section className="min-h-screen">
-                <ErrorFallback 
+                <ErrorFallback
                     error="The blog post you're looking for doesn't exist or has been removed."
                     title="Blog post not found"
                 />
@@ -152,15 +152,15 @@ const BlogDetail = () => {
         <div className="min-h-screen bg-black">
             {/* Back Navigation Button */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6">
-                <Link 
+                <Link
                     to="/blogs"
                     className="inline-flex items-center gap-2 text-white/70 hover:text-[#e7d393] transition-colors duration-300 group min-h-[44px] py-2"
                     aria-label="Back to Blogs page"
                 >
-                    <svg 
-                        className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 group-hover:-translate-x-1" 
-                        fill="none" 
-                        stroke="currentColor" 
+                    <svg
+                        className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 group-hover:-translate-x-1"
+                        fill="none"
+                        stroke="currentColor"
                         viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg"
                         aria-hidden="true"
@@ -172,7 +172,7 @@ const BlogDetail = () => {
             </div>
 
             {/* Hero Section */}
-            <section 
+            <section
                 className="relative w-full min-h-[50vh] sm:min-h-[55vh] md:min-h-[60vh] flex items-center justify-center overflow-hidden"
                 style={{
                     backgroundImage: heroImageUrl ? `url(${heroImageUrl})` : 'none',
@@ -185,12 +185,11 @@ const BlogDetail = () => {
             >
                 {/* Dark overlay */}
                 <div className="absolute inset-0 bg-black/60" aria-hidden="true" />
-                
+
                 {/* Blog title overlay */}
-                <div 
-                    className={`relative z-10 text-center px-4 sm:px-6 max-w-5xl transition-all duration-1000 ${
-                        heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                    }`}
+                <div
+                    className={`relative z-10 text-center px-4 sm:px-6 max-w-5xl transition-all duration-1000 ${heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                        }`}
                 >
                     <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-white drop-shadow-2xl leading-tight">
                         {blog.title}
@@ -217,8 +216,8 @@ const BlogDetail = () => {
                 {/* Rich Content */}
                 {blog.content && blog.content.length > 0 ? (
                     <div className="prose prose-invert prose-lg max-w-none">
-                        <PortableText 
-                            value={blog.content} 
+                        <PortableText
+                            value={blog.content}
                             components={portableTextComponents}
                         />
                     </div>

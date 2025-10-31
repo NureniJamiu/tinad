@@ -9,7 +9,7 @@ const NewReleases = () => {
       year: 2022,
       duration: "2:47",
       image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=2000&auto=format&fit=crop",
-      className: "absolute top-10 left-[5%] sm:left-[15%] md:left-[20%] rotate-[-5deg]",
+      className: "absolute top-10 left-[5%] md:left-[20%] rotate-[-5deg]",
     },
     {
       title: "Essence",
@@ -17,7 +17,7 @@ const NewReleases = () => {
       year: 2020,
       duration: "4:07",
       image: "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?q=80&w=2000&auto=format&fit=crop",
-      className: "absolute top-40 left-[10%] sm:left-[20%] md:left-[25%] rotate-[-7deg]",
+      className: "absolute top-[280px] left-[15%] md:top-40 md:left-[25%] rotate-[-7deg]",
     },
     {
       title: "Calm Down",
@@ -25,7 +25,7 @@ const NewReleases = () => {
       year: 2022,
       duration: "3:59",
       image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2000&auto=format&fit=crop",
-      className: "absolute top-5 left-[30%] sm:left-[35%] md:left-[40%] rotate-[8deg]",
+      className: "absolute top-[560px] left-[10%] md:top-5 md:left-[40%] rotate-[8deg]",
     },
     {
       title: "Free Mind",
@@ -33,7 +33,7 @@ const NewReleases = () => {
       year: 2020,
       duration: "3:42",
       image: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2000&auto=format&fit=crop",
-      className: "absolute top-32 left-[45%] sm:left-[50%] md:left-[55%] rotate-[10deg]",
+      className: "absolute top-[840px] left-[5%] md:top-32 md:left-[55%] rotate-[10deg]",
     },
     {
       title: "It's Plenty",
@@ -41,7 +41,7 @@ const NewReleases = () => {
       year: 2023,
       duration: "3:12",
       image: "https://images.unsplash.com/photo-1487180144351-b8472da7d491?q=80&w=2000&auto=format&fit=crop",
-      className: "absolute top-20 right-[25%] sm:right-[30%] md:right-[35%] rotate-[2deg]",
+      className: "absolute top-[1120px] left-[15%] md:top-20 md:right-[35%] md:left-auto rotate-[2deg]",
     },
     {
       title: "Sungba",
@@ -49,7 +49,7 @@ const NewReleases = () => {
       year: 2022,
       duration: "3:18",
       image: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=2000&auto=format&fit=crop",
-      className: "absolute top-24 left-[35%] sm:left-[40%] md:left-[45%] rotate-[-7deg]",
+      className: "absolute top-[1400px] left-[10%] md:top-24 md:left-[45%] rotate-[-7deg]",
     },
   ];
 
@@ -61,8 +61,8 @@ const NewReleases = () => {
         </h2>
       </div>
 
-      <DraggableCardContainer className="relative flex min-h-[600px] md:min-h-screen w-full items-center justify-center overflow-clip px-4">
-        <p className="absolute top-1/2 mx-auto max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg -translate-y-3/4 text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-white/20 px-4">
+      <DraggableCardContainer className="relative flex min-h-[1800px] md:min-h-screen w-full items-center justify-center overflow-clip px-4">
+        <p className="absolute top-8 md:top-1/2 mx-auto max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg md:-translate-y-3/4 text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-white/20 px-4">
           Fresh sounds from the heart of Afrobeats
         </p>
         {releases.map((release, index) => (

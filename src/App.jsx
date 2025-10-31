@@ -11,6 +11,8 @@ import Careers from "./pages/Careers";
 import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
 import Contact from "./pages/Contact";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
 import Footer from "./components/Footer";
 import LoadingScreen from "./components/LoadingScreen";
 
@@ -37,6 +39,8 @@ const App = () => {
             <Route path="/blogs" element={<Blog />} />
             <Route path="/blogs/:id" element={<BlogDetail />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
           </Routes>
           <Footer />
         </main>

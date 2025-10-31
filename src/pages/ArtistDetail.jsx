@@ -146,7 +146,7 @@ const ArtistDetail = () => {
                 style={{
                     backgroundImage: heroImageUrl ? `url(${heroImageUrl})` : 'none',
                     backgroundSize: 'cover',
-                    backgroundPosition: 'center',
+                    backgroundPosition: 'top',
                     backgroundColor: heroImageUrl ? 'transparent' : '#1a1a1a'
                 }}
                 role="banner"

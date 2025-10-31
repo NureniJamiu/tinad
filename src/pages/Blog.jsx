@@ -33,10 +33,10 @@ const Blog = () => {
         <section className="space-y-5">
             <Banner image="/blog-frame.png" text="Blogs" description={"Hear about the latest happenings in TINAD. From new signings to new albums. Stay in the loop."} className={"bg-black"}/>
 
-            <div className="space-y-20 max-w-7xl mx-auto min-h-[400px]">
+            <div className="space-y-10 sm:space-y-16 lg:space-y-20 max-w-7xl mx-auto min-h-[400px] px-4 sm:px-6 lg:px-8">
                 {loading && (
                     <div className="text-center py-20">
-                        <p className="text-white/50 text-xl">Loading blog posts...</p>
+                        <p className="text-white/50 text-lg sm:text-xl">Loading blog posts...</p>
                     </div>
                 )}
 
@@ -50,8 +50,8 @@ const Blog = () => {
 
                 {!loading && !error && (!blogs || blogs.length === 0) && (
                     <div className="text-center py-20">
-                        <p className="text-white/50 text-xl">No blog posts available yet</p>
-                        <p className="text-white/30 mt-2">Check back soon for updates!</p>
+                        <p className="text-white/50 text-lg sm:text-xl">No blog posts available yet</p>
+                        <p className="text-white/30 mt-2 text-sm sm:text-base">Check back soon for updates!</p>
                     </div>
                 )}
 
@@ -59,7 +59,8 @@ const Blog = () => {
                     <>
                         {currentBlogs.map((blog, index) => (
                             <BlogDisplayCard 
-                                key={blog._id} 
+                                key={blog._id}
+                                id={blog._id}
                                 title={blog.title} 
                                 description={blog.description} 
                                 image={blog.featuredImage}

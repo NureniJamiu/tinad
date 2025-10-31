@@ -117,3 +117,20 @@ export function getBiographyImageUrl(source) {
     .auto('format')
     .url()
 }
+
+/**
+ * Get optimized content image URL for blog posts
+ * @param {Object} source - Sanity image reference
+ * @returns {string} Optimized image URL
+ */
+export function getContentImageUrl(source) {
+  if (!source) return ''
+  return builder
+    .image(source)
+    .width(1000)
+    .height(600)
+    .format('webp')
+    .quality(85)
+    .auto('format')
+    .url()
+}

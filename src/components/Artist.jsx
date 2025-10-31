@@ -10,15 +10,15 @@ const Artist = () => {
     return (
         <section
             id="artist"
-            className="relative pt-20"
+            className="relative pt-8 sm:pt-12 lg:pt-16 pb-8 sm:pb-12 lg:pb-16"
         >
-            <div className="text-center space-y-1">
+            <div className="text-center space-y-2 sm:space-y-3 px-4 mb-6 sm:mb-8">
                 <h2
-                    className="text-8xl text-[#694D29] leading-14 xl:leading-20 tracking-tighter"
+                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-[#694D29] leading-tight tracking-tighter"
                 >
                     Artists
                 </h2>
-                <p className="font-serif text-4xl leading-14 tracking-tight">Making Sound. Making Waves. Making <span className="text-[#694D29]">SoundWaves</span></p>
+                <p className="font-serif text-lg sm:text-2xl md:text-3xl lg:text-4xl leading-tight tracking-tight px-2">Making Sound. Making Waves. Making <span className="text-[#694D29]">SoundWaves</span></p>
             </div>
 
             {/* Artist Cards Container */}
@@ -41,11 +41,12 @@ const Artist = () => {
                         <p className="text-white/50 text-lg">No artists available at the moment</p>
                     </div>
                 ) : (
-                    <ScrollVelocityContainer className="w-full">
-                        <ScrollVelocityRow baseVelocity={6} direction={1} className="py-4">
+                    <ScrollVelocityContainer className="w-full h-auto">
+                        <ScrollVelocityRow baseVelocity={6} direction={1} className="py-4 sm:py-6">
                             {artists.map((artist) => (
                                 <ArtistCard
                                     key={artist._id}
+                                    id={artist._id}
                                     name={artist.name}
                                     genre={artist.genre}
                                     image={artist.image}

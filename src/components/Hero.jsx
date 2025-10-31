@@ -75,22 +75,22 @@ const Hero = () => {
 
     return (
         <section id="hero" >
-            <div ref={containerRef} className="h-[calc(100vh-5rem)] py-0">
+            <div ref={containerRef} className="h-[calc(100vh-5rem)] py-0 relative">
                 {/* Top Content */}
-                <div className="flex flex-col text-center space-y-1 xl:space-y-3 md:space-y-3 px-4 ">
-                    <p ref={titleRef} className="font-bold text-lg sm:text-xl md:text-xl xl:text-2xl opacity-0">
+                <div className="flex flex-col text-center space-y-2 sm:space-y-3 px-4 pt-4 sm:pt-6">
+                    <p ref={titleRef} className="font-bold text-base sm:text-lg md:text-xl lg:text-2xl opacity-0">
                         TINAD: Amplifying African Voices on the Global Stage
                     </p>
-                    <p ref={subtitleRef} className="max-w-2xl mx-auto text-sm sm:text-base md:text-sm xl:text-base opacity-0 px-2">
+                    <p ref={subtitleRef} className="max-w-2xl mx-auto text-xs sm:text-sm md:text-base opacity-0 px-2">
                        Exporting it to the Global Stage: A bridge between African Creativity and International opportunity
                     </p>
 
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl xl:leading-28 font-serif leading-12 tracking-tighter">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-8xl font-serif leading-tight sm:leading-snug lg:leading-tight xl:leading-28 tracking-tighter pt-2">
                         <span ref={headingLine1Ref}>More than Music. </span>
                         <span ref={headingLine2Ref}>More than a Label.</span>
                     </h2>
                 </div>
-                <div className="flex justify-center items-center mt-6">
+                <div className="flex justify-center items-center mt-4 sm:mt-6 md:mt-8 px-2">
                     {images.map((image, idx) => (
                         <motion.div
                             key={"images" + idx}
@@ -107,31 +107,31 @@ const Hero = () => {
                                 rotate: 0,
                                 zIndex: 100,
                             }}
-                            className="rounded-xl -mr-4 mt-4 p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 shrink-0 overflow-hidden"
+                            className="rounded-lg sm:rounded-xl -mr-2 sm:-mr-4 mt-2 sm:mt-4 p-0.5 sm:p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 shrink-0 overflow-hidden"
                         >
                             <img
                                 src={image}
                                 alt="bali images"
                                 width="500"
                                 height="500"
-                                className="rounded-lg h-20 w-20 md:h-64 md:w-64 lg:h-96 lg:w-96 xl:h-[450px] xl:w-[450px] object-cover shrink-0"
+                                className="rounded-md sm:rounded-lg h-16 w-16 sm:h-24 sm:w-24 md:h-48 md:w-48 lg:h-80 lg:w-80 xl:h-[450px] xl:w-[450px] object-cover shrink-0"
                             />
                         </motion.div>
                     ))}
                 </div>
 
                 {/* Marquee Text - overlapping cards at bottom */}
-                <div className="absolute bottom-0 md:bottom-20 left-0 w-full z-20">
+                <div className="absolute bottom-0 sm:bottom-10 md:bottom-20 left-0 w-full z-20">
                     <MarqueeText />
                 </div>
 
                 {/* Disc - centered at bottom */}
-                <div className="absolute bottom-0 md:bottom-20 left-1/2 -translate-x-1/2 z-30">
+                <div className="absolute bottom-0 sm:bottom-10 md:bottom-20 left-1/2 -translate-x-1/2 z-30">
                     <RotatingDisc imageSrc="/music-disc.png" />
                 </div>
 
                 {/* Wave - centered on disc at bottom */}
-                <div className="absolute bg-black p-3 rounded-full bottom-0 md:bottom-20 left-1/2 -translate-x-1/2 z-40">
+                <div className="absolute bg-black p-2 sm:p-3 rounded-full bottom-0 sm:bottom-10 md:bottom-20 left-1/2 -translate-x-1/2 z-40">
                     <MusicWave />
                 </div>
             </div>

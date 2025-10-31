@@ -4,6 +4,7 @@ import ErrorFallback from "@/components/ErrorFallback";
 import Pagination from "@/components/Pagination";
 import { useSanityData } from "../hooks/useSanityData";
 import { featuredArtistsQuery } from "../sanity/queries";
+import Banner from "@/components/Banner";
 
 const ITEMS_PER_PAGE = 6;
 
@@ -28,12 +29,10 @@ const Artists = () => {
     };
 
     return (
-        <section>
-            <div className="min-h-96">
-                <img src="/artist-frame.png" alt="artists banner" className="w-full"/>
-            </div>
+        <section className="relative overflow-hidden">
+            <Banner image="/artist-frame.png" text="Artists" description={"A curated list of talented individuals in our talent pool making waves in the industry."} className={"bg-black bg-cover"}/>
 
-            <div className="max-w-7xl mx-auto space-y-10 py-10">
+            <div className="max-w-7xl mx-auto space-y-4 lg:space-y-8 py-10 px-4 lg:px-8">
                 {loading && (
                     <div className="text-center py-20">
                         <p className="text-white/50 text-xl">Loading artists...</p>

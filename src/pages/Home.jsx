@@ -4,6 +4,7 @@ import Producer from "../components/Producer";
 import NewReleases from "@/components/NewReleases";
 import CTA from "@/components/CTA";
 import MissionVision from "@/components/MissionVision";
+import WhatWeDo from "@/components/WhatWeDo";
 
 const Home = () => {
     return (
@@ -12,6 +13,7 @@ const Home = () => {
             <Artist />
             {/* <Producer /> */}
             <MissionVision />
+            <WhatWeDo />
             <NewReleases />
             <CTA />
         </>

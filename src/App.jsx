@@ -9,6 +9,7 @@ import Artists from "./pages/Artists";
 import ArtistDetail from "./pages/ArtistDetail";
 import Careers from "./pages/Careers";
 import Blog from "./pages/Blog";
+import BlogDetail from "./pages/BlogDetail";
 import Contact from "./pages/Contact";
 import Footer from "./components/Footer";
 import LoadingScreen from "./components/LoadingScreen";
@@ -34,6 +35,7 @@ const App = () => {
             <Route path="/artists/:id" element={<ArtistDetail />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/blogs" element={<Blog />} />
+            <Route path="/blogs/:id" element={<BlogDetail />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
           <Footer />

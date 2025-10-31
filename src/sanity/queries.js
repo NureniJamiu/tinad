@@ -27,6 +27,16 @@ export const blogsQuery = `*[_type == "blog"] | order(publishedAt desc) {
   publishedAt
 }`
 
+// Fetch single blog by ID
+export const blogByIdQuery = `*[_type == "blog" && _id == $id][0] {
+  _id,
+  title,
+  description,
+  featuredImage,
+  content,
+  publishedAt
+}`
+
 // Fetch single artist by ID with all images
 export const artistByIdQuery = `*[_type == "artist" && _id == $id][0] {
   _id,

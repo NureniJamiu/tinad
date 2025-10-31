@@ -61,6 +61,13 @@ export default defineType({
         {name: 'spotify', type: 'url', title: 'Spotify'},
       ],
     }),
+    defineField({
+      name: 'tracks',
+      title: 'Recent Tracks',
+      type: 'array',
+      description: 'Select up to 4 recent tracks to display on the artist detail page',
+      of: [{type: 'reference', to: [{type: 'track'}]}],
+    }),
   ],
   preview: {
     select: {

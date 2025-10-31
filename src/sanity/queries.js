@@ -3,7 +3,7 @@ export const artistsQuery = `*[_type == "artist"] | order(name asc) {
   _id,
   name,
   genre,
-  "image": image.asset->url,
+  image,
   bio,
   socialLinks
 }`
@@ -13,7 +13,7 @@ export const producersQuery = `*[_type == "producer"] | order(name asc) {
   _id,
   name,
   specialty,
-  "image": image.asset->url,
+  image,
   bio
 }`
 
@@ -22,7 +22,7 @@ export const blogsQuery = `*[_type == "blog"] | order(publishedAt desc) {
   _id,
   title,
   description,
-  "image": featuredImage.asset->url,
+  featuredImage,
   content,
   publishedAt
 }`
@@ -32,9 +32,9 @@ export const artistByIdQuery = `*[_type == "artist" && _id == $id][0] {
   _id,
   name,
   genre,
-  "image": image.asset->url,
-  "topImage": topImage.asset->url,
-  "bottomImage": bottomImage.asset->url,
+  image,
+  topImage,
+  bottomImage,
   bio,
   socialLinks
 }`
@@ -44,9 +44,30 @@ export const featuredArtistsQuery = `*[_type == "artist"] | order(name asc) {
   _id,
   name,
   genre,
-  "image": image.asset->url,
-  "topImage": topImage.asset->url,
-  "bottomImage": bottomImage.asset->url,
+  image,
+  topImage,
+  bottomImage,
   bio,
   socialLinks
+}`
+
+// Fetch single artist with tracks for detail page
+export const artistDetailQuery = `*[_type == "artist" && _id == $id][0] {
+  _id,
+  name,
+  genre,
+  image,
+  topImage,
+  bottomImage,
+  bio,
+  socialLinks,
+  "tracks": tracks[]-> {
+    _id,
+    title,
+    coverImage,
+    releaseYear,
+    duration,
+    spotifyLink,
+    appleMusicLink
+  }
 }`

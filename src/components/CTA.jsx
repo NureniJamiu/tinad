@@ -1,15 +1,39 @@
+import { motion } from "motion/react";
+import { useMediaQuery } from "react-responsive";
 
 const CTA = () => {
+    const isMobile = useMediaQuery({ maxWidth: 1023 });
+
     return (
         <section id="cta" className="bg-neutral-200 mt-10 sm:mt-20 lg:mt-32 mb-5">
             <div className="max-w-7xl mx-auto rounded h-full py-10 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-10">
-                <div className="text-center space-y-3">
+                <motion.div 
+                    className="text-center space-y-3"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                >
                     <h1 className="text-[#694D29] text-3xl sm:text-4xl lg:text-6xl font-semibold tracking-tight px-4">Interested in Joining Our Team?</h1>
                     <p className="text-black max-w-4xl mx-auto text-base sm:text-lg leading-tight px-4">At TINAD, we strive to be the premier platform for African artists, providing them with the resources and support they need to succeed on the global stage.</p>
-                </div>
+                </motion.div>
 
                 <div className="flex flex-col lg:flex-row items-stretch gap-5 mt-10 sm:mt-16 lg:mt-20">
-                    <div className="flex-1 bg-[#1E1E1E] h-auto rounded-2xl sm:rounded-3xl p-4 sm:p-5">
+                    <motion.div 
+                        className="flex-1 bg-[#1E1E1E] h-auto rounded-2xl sm:rounded-3xl p-4 sm:p-5"
+                        initial={
+                            isMobile
+                                ? { opacity: 0, y: 50 }
+                                : { opacity: 0, x: -100, y: 100 }
+                        }
+                        whileInView={{ opacity: 1, x: 0, y: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ 
+                            duration: 0.8, 
+                            delay: isMobile ? 0 : 0.2,
+                            ease: [0.25, 0.46, 0.45, 0.94]
+                        }}
+                    >
                         <div className="bg-[#2F2F2F] rounded-2xl sm:rounded-3xl text-center p-4 sm:p-5 space-y-4 sm:space-y-5">
                             <p className="text-left text-sm sm:text-base">For Talents</p>
                             <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">Partner with <br /> us as a Talent</h3>
@@ -24,10 +48,24 @@ const CTA = () => {
                         </ul>
 
                         <p className="text-neutral-200 text-base sm:text-lg leading-snug">Be a part of a dynamic and innovative talent brand that is shaping the future of African entertainment</p>
-                    </div>
+                    </motion.div>
 
                     {/* right div  */}
-                    <div className="flex-1 bg-[#ffffff] h-auto rounded-2xl sm:rounded-3xl p-4 sm:p-5 text-black">
+                    <motion.div 
+                        className="flex-1 bg-[#ffffff] h-auto rounded-2xl sm:rounded-3xl p-4 sm:p-5 text-black"
+                        initial={
+                            isMobile
+                                ? { opacity: 0, y: 50 }
+                                : { opacity: 0, x: 100, y: 100 }
+                        }
+                        whileInView={{ opacity: 1, x: 0, y: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ 
+                            duration: 0.8, 
+                            delay: isMobile ? 0.2 : 0.2,
+                            ease: [0.25, 0.46, 0.45, 0.94]
+                        }}
+                    >
                         <div className="bg-[#f2f2f2] rounded-2xl sm:rounded-3xl text-center p-4 sm:p-5 space-y-4 sm:space-y-5">
                             <p className="text-left text-sm sm:text-base">For Specs</p>
                             <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">Join us in  <br /> securing talents</h3>
@@ -42,7 +80,7 @@ const CTA = () => {
                         </ul>
 
                         <p className="text-neutral-900 text-base sm:text-lg leading-snug">TINAD is the best place to explore how raw talents are tranfromed and shaped across global specs.</p>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>

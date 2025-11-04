@@ -119,27 +119,6 @@ const ArtistDetail = () => {
     // Main content
     return (
         <div className="min-h-screen bg-black">
-            {/* Back Navigation Button */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6">
-                <Link 
-                    to="/artists"
-                    className="inline-flex items-center gap-2 text-white/70 hover:text-[#e7d393] transition-colors duration-300 group min-h-[44px] py-2"
-                    aria-label="Back to Artists page"
-                >
-                    <svg 
-                        className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 group-hover:-translate-x-1" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                    </svg>
-                    <span className="text-xs sm:text-sm font-medium uppercase tracking-wider">Back to Artists</span>
-                </Link>
-            </div>
-
             {/* Hero Section */}
             <section 
                 className="relative w-full min-h-[50vh] sm:min-h-[55vh] md:min-h-[60vh] flex items-center justify-center overflow-hidden"

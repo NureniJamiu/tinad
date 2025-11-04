@@ -8,64 +8,6 @@ import MusicWave from "./MusicWave";
 import { motion } from "motion/react";
 
 const Hero = () => {
-    const containerRef = useRef(null);
-    const titleRef = useRef(null);
-    const subtitleRef = useRef(null);
-    const headingLine1Ref = useRef(null);
-    const headingLine2Ref = useRef(null);
-
-    useGSAP(() => {
-        // Create a timeline with default ease
-        const tl = gsap.timeline({
-            defaults: { ease: "power1.out" },
-            onComplete: () => tl.kill() // Cleanup timeline when done
-        });
-
-        // Set initial state for text elements
-        gsap.set([titleRef.current, subtitleRef.current], {
-            y: 20,
-            opacity: 0
-        });
-
-        // Split text for heading lines
-        const splitLine1 = new SplitText(headingLine1Ref.current, { type: "chars" });
-        const splitLine2 = new SplitText(headingLine2Ref.current, { type: "chars" });
-
-        // Set initial state for heading characters
-        gsap.set([splitLine1.chars, splitLine2.chars], {
-            opacity: 0,
-            y: 30
-        });
-
-        // Title Animation
-        tl.to(titleRef.current, {
-            y: 0,
-            opacity: 1,
-            duration: 0.3
-        })
-            // Subtitle Animation
-            .to(subtitleRef.current, {
-                y: 0,
-                opacity: 1,
-                duration: 0.3
-            }, "-=0.1")
-            // First line of heading splits in
-            .to(splitLine1.chars, {
-                y: 0,
-                opacity: 1,
-                duration: 0.5,
-                stagger: 0.02,
-                ease: "power2.out"
-            }, "+=0.1")
-            // Second line of heading splits in
-            .to(splitLine2.chars, {
-                y: 0,
-                opacity: 1,
-                duration: 0.5,
-                stagger: 0.02,
-                ease: "power2.out"
-            }, "-=0.2")
-    }, { scope: containerRef });
 
     const images = [
         "https://images.pexels.com/photos/210922/pexels-photo-210922.jpeg",
@@ -74,64 +16,103 @@ const Hero = () => {
     ];
 
     return (
-        <section id="hero" >
-            <div ref={containerRef} className="h-[calc(100vh-5rem)] py-0 relative">
-                {/* Top Content */}
-                <div className="flex flex-col text-center space-y-2 sm:space-y-3 px-4 pt-4 sm:pt-6">
-                    <p ref={titleRef} className="font-bold text-base sm:text-lg md:text-xl lg:text-2xl opacity-0">
-                        TINAD: Amplifying African Voices on the Global Stage
-                    </p>
-                    <p ref={subtitleRef} className="max-w-2xl mx-auto text-xs sm:text-sm md:text-base opacity-0 px-2">
-                       Exporting it to the Global Stage: A bridge between African Creativity and International opportunity
-                    </p>
-
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-8xl font-serif leading-tight sm:leading-snug lg:leading-tight xl:leading-28 tracking-tighter pt-2">
-                        <span ref={headingLine1Ref}>More than Music. </span>
-                        <span ref={headingLine2Ref}>More than a Label.</span>
-                    </h2>
-                </div>
-                <div className="flex justify-center items-center mt-4 sm:mt-6 md:mt-8 px-2">
-                    {images.map((image, idx) => (
+        <section className="h-[calc(100vh-2rem)] md:h-[calc(100vh-5rem)] overflow-hidden">
+            <div className="h-[calc(100vh-2rem)] md:h-[calc(100vh-5rem)] py-0 relative">
+                <div
+                    className="relative mx-auto flex max-w-7xl flex-col items-center justify-center">
+                    <div className="px-5 py-10">
+                        <h1
+                        className="relative z-10 mt-10 mx-auto max-w-4xl text-center text-5xl font-bold md:text-4xl lg:text-7xl font-serif">
+                        {"More than Music. More than a Label"
+                            .split(" ")
+                            .map((word, index) => (
+                            <motion.span
+                                key={index}
+                                initial={{ opacity: 0, filter: "blur(4px)", y: 10 }}
+                                animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+                                transition={{
+                                duration: 0.3,
+                                delay: index * 0.1,
+                                ease: "easeInOut",
+                                }}
+                                className="mr-2 inline-block">
+                                {word}
+                            </motion.span>
+                            ))}
+                        </h1>
+                        <motion.p
+                        initial={{
+                            opacity: 0,
+                        }}
+                        animate={{
+                            opacity: 1,
+                        }}
+                        transition={{
+                            duration: 0.3,
+                            delay: 0.8,
+                        }}
+                        className="relative z-10 mx-auto max-w-xl py-4 text-center text-lg font-normal text-neutral-300 ">
+                        Creating meaningful business around African Talent. Exporting it to the Global Stage: A bridge between African Creativity and International opportunity.
+                        </motion.p>
                         <motion.div
-                            key={"images" + idx}
-                            style={{
-                                rotate: Math.random() * 20 - 10,
-                            }}
-                            whileHover={{
-                                scale: 1.1,
-                                rotate: 0,
-                                zIndex: 100,
-                            }}
-                            whileTap={{
-                                scale: 1.1,
-                                rotate: 0,
-                                zIndex: 100,
-                            }}
-                            className="rounded-lg sm:rounded-xl -mr-2 sm:-mr-4 mt-2 sm:mt-4 p-0.5 sm:p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 shrink-0 overflow-hidden"
-                        >
-                            <img
-                                src={image}
-                                alt="bali images"
-                                width="500"
-                                height="500"
-                                className="rounded-md sm:rounded-lg h-16 w-16 sm:h-24 sm:w-24 md:h-48 md:w-48 lg:h-80 lg:w-80 xl:h-[450px] xl:w-[450px] object-cover shrink-0"
-                            />
+                        initial={{
+                            opacity: 0,
+                            y: 10,
+                        }}
+                        animate={{
+                            opacity: 1,
+                            y: 0,
+                        }}
+                        transition={{
+                            duration: 0.3,
+                            delay: 1.2,
+                        }}
+                        className="relative z-10 mt-5">
+                        <div className="flex justify-center items-center mt-4 sm:mt-6 md:mt-8 px-2">
+                            {images.map((image, idx) => (
+                                <motion.div
+                                    key={"images" + idx}
+                                    style={{
+                                        rotate: Math.random() * 20 - 10,
+                                    }}
+                                    whileHover={{
+                                        scale: 1.1,
+                                        rotate: 0,
+                                        zIndex: 100,
+                                    }}
+                                    whileTap={{
+                                        scale: 1.1,
+                                        rotate: 0,
+                                        zIndex: 100,
+                                    }}
+                                    className="rounded-lg sm:rounded-xl -mr-2 sm:-mr-4 mt-2 sm:mt-4 p-0.5 sm:p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 shrink-0 overflow-hidden"
+                                >
+                                    <img
+                                        src={image}
+                                        alt="Artist image"
+                                        width="500"
+                                        height="500"
+                                        className="rounded-md sm:rounded-lg h-28 w-28 sm:h-28 sm:w-28 md:h-48 md:w-48 lg:h-80 lg:w-80 xl:h-[450px] xl:w-[450px] object-cover shrink-0"
+                                    />
+                                </motion.div>
+                            ))}
+                        </div>
                         </motion.div>
-                    ))}
+                    </div>
                 </div>
 
                 {/* Marquee Text - overlapping cards at bottom */}
-                <div className="absolute bottom-0 sm:bottom-10 md:bottom-20 left-0 w-full z-20">
+                <div className="absolute bottom-0 sm:bottom-10 md:-bottom-2 left-0 w-full z-20">
                     <MarqueeText />
                 </div>
 
                 {/* Disc - centered at bottom */}
-                <div className="absolute bottom-0 sm:bottom-10 md:bottom-20 left-1/2 -translate-x-1/2 z-30">
+                <div className="absolute bottom-8 sm:bottom-10 md:-bottom-2 left-1/2 -translate-x-1/2 z-30">
                     <RotatingDisc imageSrc="/music-disc.png" />
                 </div>
 
                 {/* Wave - centered on disc at bottom */}
-                <div className="absolute bg-black p-2 sm:p-3 rounded-full bottom-0 sm:bottom-10 md:bottom-20 left-1/2 -translate-x-1/2 z-40">
+                <div className="absolute bg-black p-2 sm:p-3 rounded-full bottom-10 sm:bottom-10 md:-bottom-2 left-1/2 -translate-x-1/2 z-40">
                     <MusicWave />
                 </div>
             </div>

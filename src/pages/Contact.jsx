@@ -65,7 +65,7 @@ const Contact = () => {
                         <p className="text-black max-w-4xl mx-auto text-base sm:text-lg leading-tight px-4">Our team will be in touch as soon as possible</p>
                     </div>
 
-                    <div className="flex flex-col lg:flex-row items-start justify-center gap-8 lg:gap-5 px-4 sm:px-8 lg:px-24 mt-10 sm:mt-16 lg:mt-20">
+                    <div className="flex flex-col-reverse lg:flex-row items-start justify-center gap-8 lg:gap-5 px-4 sm:px-8 lg:px-24 mt-10 sm:mt-16 lg:mt-20">
                         <div className="flex-1 text-black space-y-6 w-full">
                             <div className="flex items-start gap-2 sm:gap-3">
                                 <div className="size-8 sm:size-10 bg-[#694D29] rounded-full flex-shrink-0" />

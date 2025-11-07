@@ -51,13 +51,9 @@ const ArtistDetail = () => {
     // Validate tracks data and detect errors
     useEffect(() => {
         if (artist) {
-            // Check if tracks field exists but is null/undefined (potential error)
             if (artist.tracks === null || artist.tracks === undefined) {
-                const errorMsg = "Unable to load tracks for this artist";
-                console.error(`[ArtistDetail] Tracks loading error for artist ${id}:`, errorMsg);
-                setTracksError(errorMsg);
+                setTracksError("Unable to load tracks for this artist");
             } else {
-                // Clear any previous errors if tracks loaded successfully
                 setTracksError(null);
             }
         }
@@ -67,13 +63,10 @@ const ArtistDetail = () => {
     const retryTracks = async () => {
         setIsRetryingTracks(true);
         setTracksError(null);
-        console.log(`[ArtistDetail] Retrying tracks load for artist ${id}`);
         
         try {
-            // Retry the entire query (which includes tracks)
             await retry();
         } catch (err) {
-            console.error(`[ArtistDetail] Retry failed for artist ${id}:`, err);
             setTracksError("Failed to reload tracks. Please try again.");
         } finally {
             setIsRetryingTracks(false);

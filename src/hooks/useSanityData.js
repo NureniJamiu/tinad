@@ -17,31 +17,14 @@ export function useSanityData(query, params = {}) {
       setLoading(true)
       setError(null)
       
-      // Log the query for debugging
-      console.log('[Sanity] Fetching data with query:', query.substring(0, 100) + '...')
-      
       const result = await client.fetch(query, params)
       
-      // Validate result
       if (result === undefined || result === null) {
-        console.warn('[Sanity] Query returned null or undefined:', query)
         setData([])
       } else {
-        console.log('[Sanity] Successfully fetched data:', Array.isArray(result) ? `${result.length} items` : 'single item')
         setData(result)
       }
     } catch (err) {
-      // Enhanced error logging
-      console.error('[Sanity] Fetch error:', {
-        message: err.message,
-        query: query.substring(0, 100) + '...',
-        params,
-        stack: err.stack,
-        statusCode: err.statusCode,
-        details: err.details
-      })
-      
-      // User-friendly error messages
       let errorMessage = 'Unable to load content'
       
       if (err.message.includes('network') || err.message.includes('fetch')) {
@@ -66,7 +49,6 @@ export function useSanityData(query, params = {}) {
   }, [fetchData])
 
   const retry = useCallback(() => {
-    console.log('[Sanity] Retrying fetch...')
     fetchData()
   }, [fetchData])
 

@@ -7,9 +7,9 @@ export const sanityConfig = {
 
 // Validate configuration
 if (!sanityConfig.projectId) {
-  console.error('Missing VITE_SANITY_PROJECT_ID environment variable')
+  throw new Error('Missing VITE_SANITY_PROJECT_ID environment variable')
 }
 
 if (!sanityConfig.dataset) {
-  console.error('Missing VITE_SANITY_DATASET environment variable')
+  throw new Error('Missing VITE_SANITY_DATASET environment variable')
 }

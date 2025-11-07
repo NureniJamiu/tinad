@@ -15,6 +15,8 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import Footer from "./components/Footer";
 import LoadingScreen from "./components/LoadingScreen";
+import MusicPlayer from "./components/MusicPlayer";
+import { MusicProvider } from "./context/MusicContext";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -26,7 +28,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <MusicProvider>
       {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
       <Router>
         <main className="pt-20">
@@ -43,9 +45,10 @@ const App = () => {
             <Route path="/terms-of-service" element={<TermsOfService />} />
           </Routes>
           <Footer />
+          <MusicPlayer />
         </main>
       </Router>
-    </>
+    </MusicProvider>
   )
 }
 

@@ -1,18 +1,21 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import { useMusic } from '../context/MusicContext';
 
 const MusicWave = ({ className = '' }) => {
   const containerRef = useRef(null);
   const barRefs = useRef([]);
+  const animationRef = useRef(null);
+  const { isPlaying } = useMusic();
 
-  // Create 7 bars
+  // Create 14 bars
   const bars = Array.from({ length: 14 });
 
   useGSAP(
     () => {
       // Animate bars with staggered random scaleY values
-      gsap.to(barRefs.current, {
+      animationRef.current = gsap.to(barRefs.current, {
         scaleY: 'random(0.3, 1)',
         duration: 0.5,
         ease: 'power1.inOut',
@@ -22,9 +25,23 @@ const MusicWave = ({ className = '' }) => {
           yoyo: true,
         },
       });
+
+      return () => {
+        animationRef.current?.kill();
+      };
     },
     { scope: containerRef }
   );
+
+  useEffect(() => {
+    if (animationRef.current) {
+      if (isPlaying) {
+        animationRef.current.play();
+      } else {
+        animationRef.current.pause();
+      }
+    }
+  }, [isPlaying]);
 
   return (
     <div className="flex items-center gap-3">

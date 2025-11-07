@@ -1,6 +1,7 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import { useMusic } from '../context/MusicContext';
 
 const RotatingDisc = ({ 
   imageSrc = '/music-disc.png', 
@@ -9,11 +10,13 @@ const RotatingDisc = ({
   className = '' 
 }) => {
   const discRef = useRef(null);
+  const animationRef = useRef(null);
+  const { isPlaying } = useMusic();
 
   useGSAP(() => {
     if (!discRef.current) return;
 
-    const animation = gsap.to(discRef.current, {
+    animationRef.current = gsap.to(discRef.current, {
       rotation: 360,
       duration: speed,
       ease: 'none',
@@ -21,9 +24,19 @@ const RotatingDisc = ({
     });
 
     return () => {
-      animation.kill();
+      animationRef.current?.kill();
     };
   }, { scope: discRef });
+
+  useEffect(() => {
+    if (animationRef.current) {
+      if (isPlaying) {
+        animationRef.current.play();
+      } else {
+        animationRef.current.pause();
+      }
+    }
+  }, [isPlaying]);
 
   const handleImageError = (e) => {
     console.error('Failed to load disc image:', imageSrc);

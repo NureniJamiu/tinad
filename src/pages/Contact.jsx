@@ -25,17 +25,15 @@ const Contact = () => {
         setSubmitStatus(null);
 
         try {
+            const formDataToSend = new FormData();
+            formDataToSend.append("access_key", import.meta.env.VITE_WEB3FORMS_ACCESS_KEY);
+            formDataToSend.append("name", formData.name);
+            formDataToSend.append("email", formData.email);
+            formDataToSend.append("message", formData.message);
+
             const response = await fetch("https://api.web3forms.com/submit", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY,
-                    name: formData.name,
-                    email: formData.email,
-                    message: formData.message,
-                })
+                body: formDataToSend
             });
 
             const result = await response.json();

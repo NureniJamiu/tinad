@@ -13,10 +13,16 @@ const MusicPlayer = () => {
         try {
           await audioRef.current.play();
           setIsPlaying(true);
-          // Show unmute prompt after a short delay
-          setTimeout(() => setShowUnmutePrompt(true), 1000);
+          // Show unmute prompt after a short delay, only if still muted
+          setTimeout(() => {
+            if (audioRef.current?.muted) {
+              setShowUnmutePrompt(true);
+            }
+          }, 1000);
         } catch (error) {
           console.log("Failed to autoplay:", error);
+          // If autoplay fails, show prompt immediately
+          setShowUnmutePrompt(true);
         }
       }
     };
@@ -27,6 +33,12 @@ const MusicPlayer = () => {
   const handleUnmute = () => {
     unmute();
     setShowUnmutePrompt(false);
+  };
+
+  const handleTogglePlay = () => {
+    // Hide unmute prompt when user interacts with play button
+    setShowUnmutePrompt(false);
+    togglePlay();
   };
 
   return (
@@ -52,7 +64,7 @@ const MusicPlayer = () => {
 
       {/* Play/Pause button */}
       <button
-        onClick={togglePlay}
+        onClick={handleTogglePlay}
         className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 group"
         aria-label={isPlaying ? "Pause music" : "Play music"}
       >

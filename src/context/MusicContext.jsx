@@ -7,13 +7,26 @@ export const MusicProvider = ({ children }) => {
   const [isMuted, setIsMuted] = useState(true);
   const audioRef = useRef(null);
 
-  const togglePlay = () => {
-    if (isPlaying) {
-      audioRef.current?.pause();
-    } else {
-      audioRef.current?.play();
+  const togglePlay = async () => {
+    if (!audioRef.current) return;
+
+    // Always unmute when user clicks play
+    if (audioRef.current.muted) {
+      audioRef.current.muted = false;
+      setIsMuted(false);
     }
-    setIsPlaying(!isPlaying);
+
+    if (isPlaying) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      try {
+        await audioRef.current.play();
+        setIsPlaying(true);
+      } catch (error) {
+        console.log("Failed to play:", error);
+      }
+    }
   };
 
   const unmute = () => {

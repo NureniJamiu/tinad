@@ -66,25 +66,37 @@ const Contact = () => {
                     <div className="flex flex-col-reverse lg:flex-row items-start justify-center gap-8 lg:gap-5 px-4 sm:px-8 lg:px-24 mt-10 sm:mt-16 lg:mt-20">
                         <div className="flex-1 text-black space-y-6 w-full">
                             <div className="flex items-start gap-2 sm:gap-3">
-                                <div className="size-8 sm:size-10 bg-[#694D29] rounded-full flex-shrink-0" />
+                                <div className="flex items-center justify-center text-neutral-300 size-8 sm:size-10 bg-[#694D29] rounded-full flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                                    </svg>
+                                </div>
                                 <div className="flex flex-col">
                                     <span className="font-semibold leading-tight text-sm sm:text-base">Send us an email</span>
-                                    <span className="text-sm sm:text-base break-all">contact@tinadworld.com</span>
+                                    <span className="text-sm sm:text-base break-all">mail@tinadworld.com</span>
                                 </div>
                             </div>
                             <div className="flex items-start gap-2 sm:gap-3">
-                                <div className="size-8 sm:size-10 bg-[#694D29] rounded-full flex-shrink-0" />
+                                <div className="flex items-center justify-center text-neutral-300 size-8 sm:size-10 bg-[#694D29] rounded-full flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                    </svg>
+                                </div>
                                 <div className="flex flex-col">
                                     <span className="font-semibold leading-tight text-sm sm:text-base">Opening hours</span>
                                     <span className="text-sm sm:text-base">9:00 am - 5:00 am</span>
                                 </div>
                             </div>
                             <div className="flex items-start gap-2 sm:gap-3">
-                                <div className="size-8 sm:size-10 bg-[#694D29] rounded-full flex-shrink-0" />
+                                <div className="flex items-center justify-center text-neutral-300 size-8 sm:size-10 bg-[#694D29] rounded-full flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 1 0-2.636 6.364M16.5 12V8.25" />
+                                    </svg>
+                                </div>
                                 <div className="flex flex-col">
                                     <span className="font-semibold leading-tight text-sm sm:text-base">Check us on Instagram</span>
-                                    <span className="text-sm sm:text-base">@tinad.global  |  @tinad.africa</span>
-                                    <span className="text-sm sm:text-base">@tinad.ng  |  @wearetinad</span>
+                                    {/* <span className="text-sm sm:text-base">@tinad.global  |  @tinad.africa</span> */}
+                                    <span className="text-sm sm:text-base">@wearetinad</span>
                                 </div>
                             </div>
 

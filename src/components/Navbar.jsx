@@ -8,7 +8,7 @@ const Navbar = () => {
         <Link to="/" className="flex items-center">
           <img src="/white-logo.png" alt="Tinad Logo" className="h-16 w-auto object-contain" />
         </Link>
-        <ul className="flex items-center gap-8 bg-black w-full md:w-auto rounded-full">
+        <ul className="flex items-center gap-8 bg-black w-full md:w-auto rounded-b-lg py-3 md:py-0">
           {navLinks.map((link) => (
             <li key={link.name}>
               <Link

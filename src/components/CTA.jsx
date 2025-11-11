@@ -1,85 +1,147 @@
 import { motion } from "motion/react";
 import { useMediaQuery } from "react-responsive";
+import { Link } from "react-router-dom";
 
 const CTA = () => {
     const isMobile = useMediaQuery({ maxWidth: 1023 });
 
     return (
-        <section id="cta" className="bg-neutral-200 mt-10 sm:mt-20 lg:mt-32 mb-5">
-            <div className="max-w-7xl mx-auto rounded h-full py-10 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-10">
+        <section id="cta" className="bg-gradient-to-b from-black via-neutral-900 to-black mt-8 sm:mt-12 lg:mt-16 mb-5 py-16 sm:py-20 lg:py-28">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
                 <motion.div 
-                    className="text-center space-y-3"
+                    className="text-center space-y-4 mb-12 sm:mb-16 lg:mb-20"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
                 >
-                    <h1 className="text-[#694D29] text-3xl sm:text-4xl lg:text-6xl font-semibold tracking-tight px-4">Interested in Joining Our Team?</h1>
-                    <p className="text-black max-w-4xl mx-auto text-base sm:text-lg leading-tight px-4">At TINAD, we strive to be the premier platform for African artists, providing them with the resources and support they need to succeed on the global stage.</p>
+                    <h1 className="text-yellow text-3xl sm:text-4xl lg:text-6xl font-bold tracking-tight px-4">
+                        Ready to Join the Movement?
+                    </h1>
+                    <p className="text-white/80 max-w-3xl mx-auto text-base sm:text-lg leading-relaxed px-4">
+                        At TINAD, we're building the premier platform for African artists, providing the resources and support needed to succeed globally.
+                    </p>
                 </motion.div>
 
-                <div className="flex flex-col lg:flex-row items-stretch gap-5 mt-10 sm:mt-16 lg:mt-20">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+                    {/* For Talents Card */}
                     <motion.div 
-                        className="flex-1 bg-[#1E1E1E] h-auto rounded-2xl sm:rounded-3xl p-4 sm:p-5"
+                        className="group relative bg-gradient-to-br from-yellow/10 to-yellow/5 backdrop-blur-sm border border-yellow/20 rounded-3xl p-6 sm:p-8 hover:border-yellow/40 transition-all duration-300"
                         initial={
                             isMobile
                                 ? { opacity: 0, y: 50 }
-                                : { opacity: 0, x: -100, y: 100 }
+                                : { opacity: 0, x: -100 }
                         }
                         whileInView={{ opacity: 1, x: 0, y: 0 }}
                         viewport={{ once: true, margin: "-50px" }}
                         transition={{ 
                             duration: 0.8, 
-                            delay: isMobile ? 0 : 0.2,
+                            delay: 0.2,
                             ease: [0.25, 0.46, 0.45, 0.94]
                         }}
                     >
-                        <div className="bg-[#2F2F2F] rounded-2xl sm:rounded-3xl text-center p-4 sm:p-5 space-y-4 sm:space-y-5">
-                            <p className="text-left text-sm sm:text-base">For Talents</p>
-                            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">Partner with <br /> us as a Talent</h3>
-                            <button className="bg-white text-black w-full rounded-full py-2.5 sm:py-3 px-6 sm:px-10 font-semibold text-base sm:text-lg hover:bg-neutral-100 transition-colors">Become a Talent</button>
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-yellow/5 rounded-full blur-3xl"></div>
+                        
+                        <div className="relative space-y-6">
+                            <div className="inline-block px-4 py-1.5 bg-yellow/20 rounded-full">
+                                <span className="text-yellow text-sm font-semibold">For Talents</span>
+                            </div>
+                            
+                            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                                Partner with us as a Talent
+                            </h3>
+                            
+                            <ul className="space-y-3 text-white/80">
+                                <li className="flex items-start gap-3">
+                                    <svg className="w-5 h-5 text-yellow flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                                    </svg>
+                                    <span>Passionate about music and culture</span>
+                                </li>
+                                <li className="flex items-start gap-3">
+                                    <svg className="w-5 h-5 text-yellow flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                                    </svg>
+                                    <span>Making a global difference</span>
+                                </li>
+                                <li className="flex items-start gap-3">
+                                    <svg className="w-5 h-5 text-yellow flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                                    </svg>
+                                    <span>Join an elite talent pool</span>
+                                </li>
+                            </ul>
+                            
+                            <p className="text-white/70 text-sm sm:text-base leading-relaxed">
+                                Be part of a dynamic brand shaping the future of African entertainment on the world stage.
+                            </p>
+                            
+                            <Link to="/contact">
+                                <button className="w-full bg-yellow hover:bg-yellow/90 text-black font-semibold py-3.5 px-8 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-yellow/20">
+                                    Become a Talent
+                                </button>
+                            </Link>
                         </div>
-
-                        <ul className="my-4 sm:my-5 text-base sm:text-lg">
-                            <li className="list-disc list-inside text-neutral-200 mb-2 sm:mb-3">Passionate about music</li>
-                            <li className="list-disc list-inside text-neutral-200 mb-2 sm:mb-3">Promoting the culture</li>
-                            <li className="list-disc list-inside text-neutral-200 mb-2 sm:mb-3">Making a difference</li>
-                            <li className="list-disc list-inside text-neutral-200 mb-2 sm:mb-3">Joining a talent pool</li>
-                        </ul>
-
-                        <p className="text-neutral-200 text-base sm:text-lg leading-snug">Be a part of a dynamic and innovative talent brand that is shaping the future of African entertainment</p>
                     </motion.div>
 
-                    {/* right div  */}
+                    {/* For Team Members Card */}
                     <motion.div 
-                        className="flex-1 bg-[#ffffff] h-auto rounded-2xl sm:rounded-3xl p-4 sm:p-5 text-black"
+                        className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 rounded-3xl p-6 sm:p-8 hover:border-white/40 transition-all duration-300"
                         initial={
                             isMobile
                                 ? { opacity: 0, y: 50 }
-                                : { opacity: 0, x: 100, y: 100 }
+                                : { opacity: 0, x: 100 }
                         }
                         whileInView={{ opacity: 1, x: 0, y: 0 }}
                         viewport={{ once: true, margin: "-50px" }}
                         transition={{ 
                             duration: 0.8, 
-                            delay: isMobile ? 0.2 : 0.2,
+                            delay: 0.3,
                             ease: [0.25, 0.46, 0.45, 0.94]
                         }}
                     >
-                        <div className="bg-[#f2f2f2] rounded-2xl sm:rounded-3xl text-center p-4 sm:p-5 space-y-4 sm:space-y-5">
-                            <p className="text-left text-sm sm:text-base">For Specs</p>
-                            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">Join us in  <br /> securing talents</h3>
-                            <button className="bg-black text-white w-full rounded-full py-2.5 sm:py-3 px-6 sm:px-10 font-semibold text-base sm:text-lg hover:bg-neutral-800 transition-colors">See available positions</button>
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl"></div>
+                        
+                        <div className="relative space-y-6">
+                            <div className="inline-block px-4 py-1.5 bg-white/20 rounded-full">
+                                <span className="text-white text-sm font-semibold">For Team Members</span>
+                            </div>
+                            
+                            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                                Join us in discovering talents
+                            </h3>
+                            
+                            <ul className="space-y-3 text-white/80">
+                                <li className="flex items-start gap-3">
+                                    <svg className="w-5 h-5 text-white flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                                    </svg>
+                                    <span>Create promotional campaigns</span>
+                                </li>
+                                <li className="flex items-start gap-3">
+                                    <svg className="w-5 h-5 text-white flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                                    </svg>
+                                    <span>Drive talent acquisition & management</span>
+                                </li>
+                                <li className="flex items-start gap-3">
+                                    <svg className="w-5 h-5 text-white flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                                    </svg>
+                                    <span>Transform raw talent globally</span>
+                                </li>
+                            </ul>
+                            
+                            <p className="text-white/70 text-sm sm:text-base leading-relaxed">
+                                TINAD is where raw talents are discovered, transformed, and shaped for global success.
+                            </p>
+                            
+                            <Link to="/careers">
+                                <button className="w-full bg-white hover:bg-white/90 text-black font-semibold py-3.5 px-8 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-white/20">
+                                    See Open Positions
+                                </button>
+                            </Link>
                         </div>
-
-                        <ul className="my-4 sm:my-5 text-base sm:text-lg">
-                            <li className="list-disc list-inside text-neutral-900 mb-2 sm:mb-3">Creating promotional campaign</li>
-                            <li className="list-disc list-inside text-neutral-900 mb-2 sm:mb-3">Content for talent acquisition</li>
-                            <li className="list-disc list-inside text-neutral-900 mb-2 sm:mb-3">Talent Management</li>
-                            <li className="list-disc list-inside text-neutral-900 mb-2 sm:mb-3">Exploring talent transformation</li>
-                        </ul>
-
-                        <p className="text-neutral-900 text-base sm:text-lg leading-snug">TINAD is the best place to explore how raw talents are tranfromed and shaped across global specs.</p>
                     </motion.div>
                 </div>
             </div>

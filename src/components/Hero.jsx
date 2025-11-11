@@ -1,59 +1,76 @@
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
-import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
 import MarqueeText from "./MarqueeText";
 import RotatingDisc from "./RotatingDisc";
 import MusicWave from "./MusicWave";
 import { motion } from "motion/react";
+import { useSanityData } from "../hooks/useSanityData";
+import { siteSettingsQuery } from "../sanity/queries";
+import { urlFor } from "../sanity/imageBuilder";
 
 const Hero = () => {
+    const { data: settings } = useSanityData(siteSettingsQuery);
+    const heroRef = useRef(null);
+    const titleRef = useRef(null);
+    const descRef = useRef(null);
 
-    const images = [
+    // Fallback images if Sanity data is not available
+    const fallbackImages = [
         "https://images.pexels.com/photos/210922/pexels-photo-210922.jpeg",
         "https://images.pexels.com/photos/894156/pexels-photo-894156.jpeg",
         "https://images.pexels.com/photos/243989/pexels-photo-243989.jpeg",
     ];
 
+    // Use Sanity images if available, otherwise use fallback
+    const images = settings?.heroImages?.length === 3
+        ? settings.heroImages.map(img => urlFor(img).width(800).height(800).url())
+        : fallbackImages;
+
+    // GSAP animations for text
+    useGSAP(() => {
+        if (!titleRef.current || !descRef.current) return;
+
+        const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+        // Animate title with SplitText
+        const splitTitle = new SplitText(titleRef.current, { type: "words,chars" });
+
+        tl.from(splitTitle.chars, {
+            opacity: 0,
+            y: 50,
+            rotateX: -90,
+            stagger: 0.02,
+            duration: 0.8,
+        }, 0.3)
+            .from(descRef.current, {
+                opacity: 0,
+                y: 30,
+                duration: 0.8,
+            }, 0.8);
+
+        return () => {
+            splitTitle.revert();
+        };
+    }, { scope: heroRef });
+
     return (
-        <section className="h-[calc(100vh-6rem)] md:h-[calc(100vh-5rem)] overflow-hidden">
+        <section ref={heroRef} className="h-[calc(100vh-6rem)] md:h-[calc(100vh-5rem)] overflow-hidden">
             <div className="h-[calc(100vh-6rem)] md:h-[calc(100vh-5rem)] py-0 relative">
                 <div
                     className="relative mx-auto flex max-w-7xl flex-col items-center justify-center">
                     <div className="px-5 py-10">
                         <h1
+                            ref={titleRef}
                             className="relative z-10 mt-10 mx-auto max-w-4xl text-center text-5xl font-bold md:text-4xl lg:text-7xl font-serif">
-                            {"More than Music. More than a Label"
-                                .split(" ")
-                                .map((word, index) => (
-                                    <motion.span
-                                        key={index}
-                                        initial={{ opacity: 0, filter: "blur(4px)", y: 10 }}
-                                        animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-                                        transition={{
-                                            duration: 0.3,
-                                            delay: index * 0.1,
-                                            ease: "easeInOut",
-                                        }}
-                                        className="mr-2 inline-block">
-                                        {word}
-                                    </motion.span>
-                                ))}
+                            More than Music. More than a Label
                         </h1>
-                        <motion.p
-                            initial={{
-                                opacity: 0,
-                            }}
-                            animate={{
-                                opacity: 1,
-                            }}
-                            transition={{
-                                duration: 0.3,
-                                delay: 0.8,
-                            }}
-                            className="relative z-10 mx-auto max-w-xl py-4 text-center text-lg font-normal text-neutral-300 ">
+                        <p
+                            ref={descRef}
+                            className="relative z-10 mx-auto max-w-xl py-4 text-center text-lg font-normal text-neutral-300">
                             Creating meaningful business around African Talent. Exporting it to the Global Stage: A bridge between African Creativity and International opportunity.
-                        </motion.p>
+                        </p>
                         <motion.div
                             initial={{
                                 opacity: 0,

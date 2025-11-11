@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import { useMusic } from "../context/MusicContext";
 
 const MusicPlayer = () => {
-  const { isPlaying, setIsPlaying, isMuted, audioRef, togglePlay, unmute } = useMusic();
+  const { isPlaying, setIsPlaying, isMuted, audioRef, togglePlay, unmute, musicUrl } = useMusic();
   const [showUnmutePrompt, setShowUnmutePrompt] = useState(false);
+
+  // Fallback music URL
+  const audioSrc = musicUrl || "/music/background-music.mp3";
 
   useEffect(() => {
     // Auto-play muted on mount (always works)
@@ -30,10 +33,16 @@ const MusicPlayer = () => {
     playAudio();
   }, [audioRef, setIsPlaying]);
 
-  const handleUnmute = () => {
-    unmute();
-    setShowUnmutePrompt(false);
-  };
+  useEffect(() => {
+    // Auto-hide prompt after 5 seconds
+    if (showUnmutePrompt) {
+      const timer = setTimeout(() => {
+        setShowUnmutePrompt(false);
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [showUnmutePrompt]);
 
   const handleTogglePlay = () => {
     // Hide unmute prompt when user interacts with play button
@@ -43,22 +52,23 @@ const MusicPlayer = () => {
 
   return (
     <>
-      <audio ref={audioRef} loop preload="auto">
-        <source src="/music/background-music.mp3" type="audio/mpeg" />
-      </audio>
+      <audio ref={audioRef} loop preload="auto" src={audioSrc} />
 
-      {/* Unmute prompt */}
+
+      {/* Sound guide tooltip */}
       {showUnmutePrompt && isMuted && (
-        <div className="fixed top-24 left-1/2 -translate-x-1/2 md:left-auto md:right-6 md:translate-x-0 z-50 animate-fade-in px-4 md:px-0">
-          <button
-            onClick={handleUnmute}
-            className="flex items-center gap-2 px-4 py-2.5 md:px-4 md:py-3 bg-yellow/95 hover:bg-yellow text-black text-sm md:text-base font-medium rounded-full shadow-lg hover:shadow-yellow/50 transition-all duration-300 hover:scale-105 whitespace-nowrap"
-          >
-            <svg className="w-4 h-4 md:w-5 md:h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
-            </svg>
-            <span>Click the play button below to enable sound</span>
-          </button>
+        <div className="fixed bottom-20 right-4 md:bottom-24 md:right-6 z-50 animate-fade-in">
+          <div className="relative">
+            <div className="flex items-center gap-2 px-3 py-2 bg-yellow/95 text-black text-xs md:text-sm font-medium rounded-lg shadow-lg pointer-events-none">
+              <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+              </svg>
+              <span className="hidden md:inline">Click to enable sound</span>
+              <span className="md:hidden">Tap to enable sound</span>
+            </div>
+            {/* Arrow pointing down */}
+            <div className="absolute -bottom-2 right-6 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-yellow/95"></div>
+          </div>
         </div>
       )}
 

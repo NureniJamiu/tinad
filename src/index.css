@@ -34,60 +34,20 @@ body {
     @apply flex flex-col justify-center items-center;
 }
 
-@utility abs-center {
-    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
-}
-
-@utility text-gradient {
-    background: linear-gradient(to bottom, #ffffff, #898989);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-@utility radial-gradient {
-    background: radial-gradient(
-            circle at center,
-            #434343 0%,
-            #000 50%,
-            transparent 100%
-    );
-}
-
-@utility masked-img {
-    mask-image: url("/images/mask-img.png");
-    mask-repeat: no-repeat;
-    mask-position: center;
-    mask-size: 50%;
-}
-
 @layer components {
     main {
         @apply w-full overflow-x-hidden;
     }
 
-    nav {
-        @apply fixed z-50 w-full h-20;
-
-        div {
-            @apply inline-flex md:flex-row flex-col md:justify-between items-center gap-0 md:gap-3 py-20 lg:px-0 px-5 container mx-auto h-full bg-black w-full md:rounded-full;
-        }
-
-        p {
-            @apply text-3xl -mb-2;
-        }
-
-        a {
-            @apply cursor-pointer text-nowrap md:text-base text-sm;
-        }
-
-        ul {
-            @apply flex-center lg:gap-12 gap-32;
-        }
+    /* Section Spacing Control */
+    section {
+        /* Default spacing between sections */
+        @apply mb-4 sm:mb-6 lg:mb-8;
     }
 
+    /* Specific section spacing overrides */
     #hero {
-        @apply relative z-10 h-screen w-full border border-transparent overflow-hidden;
+        @apply relative z-10 h-screen w-full border border-transparent overflow-hidden mb-0;
         transform-origin: center center;
         will-change: transform;
 
@@ -119,147 +79,65 @@ body {
     }
 
     #artist {
-        @apply relative min-h-screen w-full bg-black;
+        @apply relative w-full bg-black mb-0;
 
         h2 {
             will-change: transform;
         }
     }
 
-    .artist-cards-container {
-        @apply absolute flex gap-6 px-10;
-        top: 50%;
-        right: 0;
-        transform: translateY(-50%);
+    /* Tighter spacing for mission-vision after artist */
+    #artist + section {
+        @apply mt-0 sm:mt-0 lg:mt-0;
     }
 
-    .artist-card {
-        @apply overflow-hidden transition-all duration-300;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 16px;
-        width: 280px;
-        height: 460px;
-        will-change: transform;
-    }
+    nav {
+        @apply fixed z-50 w-full;
 
-    .artist-card:hover {
-        border-color: var(--color-yellow);
-    }
-
-    .artist-card-image {
-        @apply w-full object-cover;
-        height: 540px;
-    }
-
-    .artist-card-content {
-        @apply p-5;
-    }
-
-    .artist-card-name {
-        @apply text-2xl font-semibold mb-2;
-        color: var(--color-yellow);
-    }
-
-    .artist-card-genre {
-        @apply text-sm;
-        color: rgba(255, 255, 255, 0.7);
-    }
-
-    @media (max-width: 768px) {
-        .artist-cards-container {
-            @apply flex-col px-5 gap-4;
+        p {
+            @apply text-3xl -mb-2;
         }
 
-        .artist-card {
-            @apply w-full h-auto;
+        a {
+            @apply cursor-pointer text-nowrap md:text-base text-sm;
         }
 
-        .artist-card-image {
-            @apply h-52;
-        }
-    }
-   
-
-        .badge {
-            @apply inline-block rounded-full bg-white text-black px-4 py-2 text-sm font-medium mb-8;
-        }
-
-        .top-grid {
-            @apply grid grid-cols-1 xl:grid-cols-12 gap-5 mb-5 md:px-0 px-5;
-
-            > div {
-                @apply rounded-3xl overflow-hidden h-72 relative;
-            }
-
-            img {
-                @apply object-cover w-full h-full;
-            }
-        }
-
-        .bottom-grid {
-            @apply grid grid-cols-1 md:grid-cols-12 gap-5 md:px-0 px-5;
-
-            > div {
-                @apply rounded-3xl overflow-hidden h-72 relative;
-            }
-
-            img {
-                @apply object-cover w-full h-full;
-            }
+        ul {
+            @apply flex-center lg:gap-12 gap-8;
         }
     }
+
+    .badge {
+        @apply inline-block rounded-full bg-white text-black px-4 py-2 text-sm font-medium mb-8;
+    }
+
+    .top-grid {
+        @apply grid grid-cols-1 xl:grid-cols-12 gap-5 mb-5 md:px-0 px-5;
+
+        > div {
+            @apply rounded-3xl overflow-hidden h-72 relative;
+        }
+
+        img {
+            @apply object-cover w-full h-full;
+        }
+    }
+
+    .bottom-grid {
+        @apply grid grid-cols-1 md:grid-cols-12 gap-5 md:px-0 px-5;
+
+        > div {
+            @apply rounded-3xl overflow-hidden h-72 relative;
+        }
+
+        img {
+            @apply object-cover w-full h-full;
+        }
+    }
+}
 
 @layer utilities {
-    @keyframes marquee {
-        0% {
-            transform: translateX(0%);
-        }
-        100% {
-            transform: translateX(-50%);
-        }
-    }
-
-    @keyframes wave {
-        0%, 100% {
-            transform: scaleY(0.5);
-        }
-        50% {
-            transform: scaleY(1);
-        }
-    }
-
-    .animate-marquee {
-        animation: marquee 20s linear infinite;
-    }
-
-    .animate-wave-1 {
-        animation: wave 0.6s ease-in-out infinite;
-    }
-
-    .animate-wave-2 {
-        animation: wave 0.6s ease-in-out infinite 0.2s;
-    }
-
-    .animate-wave-3 {
-        animation: wave 0.6s ease-in-out infinite 0.4s;
-    }
-
-    @keyframes fade-in {
-        from {
-            opacity: 0;
-            transform: translateY(-10px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .animate-fade-in {
-        animation: fade-in 0.5s ease-out forwards;
-    }
-
+    /* Hover border effect for links */
     .hover-border-link {
         @apply relative pb-1;
     }

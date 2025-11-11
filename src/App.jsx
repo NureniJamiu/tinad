@@ -4,6 +4,7 @@ import { ScrollTrigger, SplitText } from "gsap/all";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
+import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import Artists from "./pages/Artists";
 import ArtistDetail from "./pages/ArtistDetail";
@@ -17,20 +18,28 @@ import Footer from "./components/Footer";
 import LoadingScreen from "./components/LoadingScreen";
 import MusicPlayer from "./components/MusicPlayer";
 import { MusicProvider } from "./context/MusicContext";
+import { useSanityData } from "./hooks/useSanityData";
+import { siteSettingsQuery } from "./sanity/queries";
+import { getFileUrl } from "./sanity/fileBuilder";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const { data: settings } = useSanityData(siteSettingsQuery);
+
+  // Get music URL from Sanity
+  const musicUrl = settings?.backgroundMusic ? getFileUrl(settings.backgroundMusic) : null;
 
   const handleLoadingComplete = () => {
     setIsLoading(false);
   };
 
   return (
-    <MusicProvider>
+    <MusicProvider musicUrl={musicUrl}>
       {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
       <Router>
+        <ScrollToTop />
         <main className="pt-20">
           <Navbar />
           <Routes>

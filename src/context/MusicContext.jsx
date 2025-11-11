@@ -2,7 +2,7 @@ import { createContext, useContext, useState, useRef } from "react";
 
 const MusicContext = createContext();
 
-export const MusicProvider = ({ children }) => {
+export const MusicProvider = ({ children, musicUrl }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const audioRef = useRef(null);
@@ -37,7 +37,7 @@ export const MusicProvider = ({ children }) => {
   };
 
   return (
-    <MusicContext.Provider value={{ isPlaying, setIsPlaying, isMuted, audioRef, togglePlay, unmute }}>
+    <MusicContext.Provider value={{ isPlaying, setIsPlaying, isMuted, audioRef, togglePlay, unmute, musicUrl }}>
       {children}
     </MusicContext.Provider>
   );

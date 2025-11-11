@@ -81,3 +81,22 @@ export const artistDetailQuery = `*[_type == "artist" && _id == $id][0] {
     appleMusicLink
   }
 }`
+
+// Fetch all tracks for new releases section with artist info
+export const tracksQuery = `*[_type == "track"] | order(releaseYear desc) {
+  _id,
+  title,
+  coverImage,
+  releaseYear,
+  duration,
+  spotifyLink,
+  appleMusicLink,
+  "artist": *[_type == "artist" && references(^._id)][0].name
+}`
+
+// Fetch site settings (hero images and background music)
+export const siteSettingsQuery = `*[_type == "siteSettings"][0] {
+  _id,
+  heroImages,
+  backgroundMusic
+}`

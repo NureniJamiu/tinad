@@ -2,10 +2,10 @@ import { motion } from "motion/react";
 
 const MissionVision = () => {
   return (
-    <section className="relative py-16 sm:py-24 lg:py-32 overflow-hidden">
+    <section className="relative pt-8 sm:pt-12 lg:pt-16 pb-16 sm:pb-24 lg:pb-32 overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-yellow-500/5 to-transparent pointer-events-none" />
-      
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Statement */}
         <motion.div
@@ -20,7 +20,7 @@ const MissionVision = () => {
             <span className="block text-[#694D29] mt-2">Legends</span>
           </h2>
           <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            From Lagos to London, we turn raw talent into global movements. 
+            From Lagos to London, we turn raw talent into global movements.
             This is where African sound meets world stage.
           </p>
         </motion.div>
@@ -44,8 +44,8 @@ const MissionVision = () => {
               <h3 className="text-2xl sm:text-3xl font-bold text-white">The Mission</h3>
             </div>
             <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-              Discover the undiscovered. Amplify the authentic. We scout, develop, and launch 
-              artists who don't just make music—they shape culture. Every release is a statement. 
+              Discover the undiscovered. Amplify the authentic. We scout, develop, and launch
+              artists who don't just make music—they shape culture. Every release is a statement.
               Every artist, a movement.
             </p>
           </motion.div>
@@ -67,8 +67,8 @@ const MissionVision = () => {
               <h3 className="text-2xl sm:text-3xl font-bold text-white">The Vision</h3>
             </div>
             <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-              To be the label that redefined African music on the global stage. Where Grammy 
-              nominations are just the beginning. Where our artists headline festivals, break 
+              To be the label that redefined African music on the global stage. Where Grammy
+              nominations are just the beginning. Where our artists headline festivals, break
               streaming records, and inspire the next generation.
             </p>
           </motion.div>

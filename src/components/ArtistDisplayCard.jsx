@@ -50,7 +50,7 @@ const ArtistDisplayCard = ({
                     >
                         {displayName}
                     </motion.h2>
-                    <p className={`max-w-full sm:max-w-sm md:max-w-md lg:max-w-xs xl:max-w-sm text-base sm:text-lg leading-relaxed mx-auto text-white/80 ${reverse ? "lg:mx-0" : "lg:ml-auto lg:mr-0"}`}>
+                    <p className={`max-w-full sm:max-w-sm md:max-w-md lg:max-w-xs xl:max-w-sm text-base sm:text-lg leading-relaxed mx-auto text-white/80 line-clamp-5 ${reverse ? "lg:mx-0" : "lg:ml-auto lg:mr-0"}`}>
                         {displayDescription}
                     </p>
                 </div>

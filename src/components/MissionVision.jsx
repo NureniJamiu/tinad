@@ -44,9 +44,11 @@ const MissionVision = () => {
               <h3 className="text-2xl sm:text-3xl font-bold text-white">The Mission</h3>
             </div>
             <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-              Discover the undiscovered. Amplify the authentic. We scout, develop, and launch
-              artists who don't just make music—they shape culture. Every release is a statement.
-              Every artist, a movement.
+              To discover, develop and deliver
+              Africa’s brightest talents to the
+              world, building global business
+              ecosystems around music, culture
+              and originality
             </p>
           </motion.div>
 
@@ -67,9 +69,12 @@ const MissionVision = () => {
               <h3 className="text-2xl sm:text-3xl font-bold text-white">The Vision</h3>
             </div>
             <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-              To be the label that redefined African music on the global stage. Where Grammy
-              nominations are just the beginning. Where our artists headline festivals, break
-              streaming records, and inspire the next generation.
+             To become Africa’s most powerful
+              cultural export platform, turning raw
+              talent into world-class creative
+              enterprises and redefining how the world
+              hears and engages African music and
+              stories.
             </p>
           </motion.div>
         </div>

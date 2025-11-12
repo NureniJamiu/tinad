@@ -5,11 +5,11 @@ const Footer = () => {
 
     return (
         <footer id="footer" className="border-t border-white/10 mt-20">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+            <div className="px-6 sm:px-6 py-8 sm:py-12">
                 {/* Main Footer Content */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div className="flex flex-col md:flex-row justify-between gap-8 mb-8">
                     {/* Logo & Description */}
-                    <div className="flex flex-col items-center md:items-start gap-4">
+                    <div className="flex-4 flex flex-col items-center md:items-start gap-4">
                         <img src="/gold-logo.png" alt="TINAD logo" className="h-16 w-auto"/>
                         <p className="text-white/70 text-sm text-center md:text-left max-w-xs">
                             A modern music record label showcasing exceptional artists and releases.
@@ -17,7 +17,7 @@ const Footer = () => {
                     </div>
 
                     {/* Quick Links */}
-                    <div className="flex flex-col items-center md:items-start gap-4">
+                    <div className="flex-1 flex flex-col items-center md:items-start gap-4">
                         <h3 className="text-yellow font-semibold text-lg">Quick Links</h3>
                         <div className="flex flex-col gap-2 text-sm">
                             <Link to="/artists" className="text-white/70 hover:text-yellow transition-colors">Artists</Link>
@@ -28,7 +28,7 @@ const Footer = () => {
                     </div>
 
                     {/* Legal & Social */}
-                    <div className="flex flex-col items-center md:items-start gap-4">
+                    <div className="flex-1 flex flex-col items-center md:items-start gap-4">
                         <h3 className="text-yellow font-semibold text-lg">Legal</h3>
                         <div className="flex flex-col gap-2 text-sm">
                             <Link to="/privacy-policy" className="text-white/70 hover:text-yellow transition-colors">Privacy Policy</Link>

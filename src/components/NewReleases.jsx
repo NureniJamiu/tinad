@@ -84,8 +84,19 @@ const NewReleases = () => {
           // Skip tracks without cover images
           if (!release.coverImage) return null;
 
+          const handleCardClick = () => {
+            // Open streaming link if available
+            if (release.streamingLink) {
+              window.open(release.streamingLink, '_blank', 'noopener,noreferrer');
+            }
+          };
+
           return (
-            <DraggableCardBody key={release._id || index} className={release.className}>
+            <DraggableCardBody 
+              key={release._id || index} 
+              className={release.className}
+              onClick={handleCardClick}
+            >
               <div className="relative">
                 <img
                   src={urlFor(release.coverImage).width(800).height(800).url()}
@@ -93,6 +104,11 @@ const NewReleases = () => {
                   className="pointer-events-none relative z-10 h-48 w-48 sm:h-64 sm:w-64 md:h-80 md:w-80 object-cover rounded-lg shadow-2xl"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-lg z-20" />
+                {release.streamingLink && (
+                  <div className="absolute bottom-2 right-2 z-30 bg-[#e7d393] text-black px-2 py-1 rounded text-xs font-semibold">
+                    Click to play
+                  </div>
+                )}
               </div>
               <div className="mt-3 md:mt-4 text-center space-y-1">
                 <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-[#694D29]">

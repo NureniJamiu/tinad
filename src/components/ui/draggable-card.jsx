@@ -13,7 +13,8 @@ import {
 
 export const DraggableCardBody = ({
   className,
-  children
+  children,
+  onClick
 }) => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -25,6 +26,8 @@ export const DraggableCardBody = ({
     right: 0,
     bottom: 0,
   });
+  const [isDragging, setIsDragging] = useState(false);
+  const dragStartPos = useRef({ x: 0, y: 0 });
 
   // physics biatch
   const velocityX = useVelocity(mouseX);
@@ -94,11 +97,26 @@ export const DraggableCardBody = ({
       ref={cardRef}
       drag
       dragConstraints={constraints}
-      onDragStart={() => {
+      onDragStart={(event, info) => {
         document.body.style.cursor = "grabbing";
+        setIsDragging(false);
+        dragStartPos.current = { x: info.point.x, y: info.point.y };
+      }}
+      onDrag={() => {
+        setIsDragging(true);
       }}
       onDragEnd={(event, info) => {
         document.body.style.cursor = "default";
+
+        // Calculate distance moved
+        const deltaX = Math.abs(info.point.x - dragStartPos.current.x);
+        const deltaY = Math.abs(info.point.y - dragStartPos.current.y);
+        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+        // If moved less than 5px, treat as click
+        if (distance < 5 && onClick) {
+          onClick();
+        }
 
         controls.start({
           rotateX: 0,
@@ -134,6 +152,8 @@ export const DraggableCardBody = ({
           damping: 15,
           mass: 0.8,
         });
+
+        setTimeout(() => setIsDragging(false), 100);
       }}
       style={{
         rotateX,

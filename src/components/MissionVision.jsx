@@ -69,7 +69,7 @@ const MissionVision = () => {
               <h3 className="text-2xl sm:text-3xl font-bold text-white">The Vision</h3>
             </div>
             <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-             To become Africa’s most powerful
+              To become Africa’s most powerful
               cultural export platform, turning raw
               talent into world-class creative
               enterprises and redefining how the world
